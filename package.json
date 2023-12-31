@@ -1,0 +1,27 @@
+{
+  "name": "book-app",
+  "version": "1.0.0",
+  "description": "Book app",
+  "main": "app.js",
+  "scripts": {
+    "start": "live-server",
+    "build": "rollup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smirnovrm/book-app.git"
+  },
+  "keywords": [
+    "book"
+  ],
+  "author": "Roman Smirnov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smirnovrm/book-app/issues"
+  },
+  "homepage": "https://github.com/smirnovrm/book-app#readme",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "rollup": "^4.9.2"
+  }
+}
