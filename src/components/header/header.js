@@ -8,8 +8,7 @@ export class Header extends DivComponent
         this.appState = appState;
     }
 
-    render() {
-        this.el.innerHTML = '';
+    render() {        
         this.el.classList.add('header');
         this.el.innerHTML = `
                 <div>
