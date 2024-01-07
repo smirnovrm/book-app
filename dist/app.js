@@ -1143,10 +1143,32 @@
         }
     }
 
+    class CardList extends DivComponent
+    {
+        constructor(appState, parentState) {
+            super();
+            this.appState = appState;
+            this.parentState = parentState;
+        }
+
+        render() {
+            if(this.parentState.loading) {
+                this.el.innerHTML = `<div class="card-list__loader">Загрузка...</div>`;
+                return this.el;
+            }
+            this.el.classList.add('card-list');
+            this.el.innerHTML = `
+            <h1>Найдено книг: ${this.parentState.numFound}</h1>
+        `;
+            return this.el;
+        }
+    }
+
     class MainView extends AbstractView
     {
         state = {
             list: [],
+            numFound: 0,
             loading: false,
             searchQuery: undefined,
             offset: 0
@@ -1172,7 +1194,13 @@
                 const data = await this.loadList(this.state.searchQuery, this.state.offset);
                 this.state.loading = false;
                 this.state.list = data.docs;
+                this.state.numFound = data.numFound;
+                this.render();
                 console.log(data);
+            }
+
+            if(path === 'list' || path === 'loading'){
+                this.render();
             }
         }
 
@@ -1184,6 +1212,7 @@
         render() {
             const main = document.createElement('div');
             main.append(new Search(this.state).render());
+            main.append(new CardList(this.appState, this.state).render());
             this.app.innerHTML = '';
             this.app.append(main);
             this.renderHeader();
