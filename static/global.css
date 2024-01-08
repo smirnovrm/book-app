@@ -9,7 +9,9 @@
 :root {
   --black: #121212;
   --white: #fafafa;
+  --white-title: #ffffff;
   --gray: #dedede;
+  --gray-image-background: #b8b8b8;
 }
 
 body {
